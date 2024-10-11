@@ -1,0 +1,15 @@
+url: ./examples/20100117.dat
+filename: 20100117.tmp.dat
+meta-encoding: cp1251
+challenge-id: dev.pcms.test.20100117
+problems:
+    A: problem-a
+    B: problem-b
+    C: problem-c
+    D: problem-d
+    E: problem-e
+    F: problem-f
+    G: problem-g
+    H: problem-h
+    I: problem-i
+    J: problem-j

@@ -1,0 +1,20 @@
+url: https://acm.math.spbu.ru/cgi-bin/view.pl/m240512.dat
+challenge-id: dev.pcms.test.m240512
+meta-encoding: cp1251
+
+problems:
+    A: problem-a
+    B: problem-b
+    C: problem-c
+    D: problem-d
+    E: problem-e
+    F: problem-f
+    G: problem-g
+    H: problem-h
+    I: problem-i
+    J: problem-j
+    K: problem-k
+    L: problem-l
+    M: problem-m
+    N: problem-n
+    O: problem-o

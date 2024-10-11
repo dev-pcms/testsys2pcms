@@ -1,0 +1,53 @@
+url: https://acm.math.spbu.ru/cgi-bin/view.pl/m240512.dat
+challenge-id: dev.pcms.test.m240512
+meta-encoding: cp1251
+
+# '%icpc' by default
+scoring-model: '%icpc'
+
+# Taken from URL if not specified
+filename: m240512.dat
+
+# challenge-id if not specified
+clock-id: dev.pcms.test.m240512
+
+# challenge-id with a dot if not specified
+problems-prefix: dev.pcms.test.m240512.
+
+# challenge-id with a dot if not specified
+sessions-prefix: dev.pcms.test.m240512.
+
+# challenge-id with a dot if not specified
+parties-prefix: dev.pcms.test.m240512.
+
+# Empty if not specified
+xmls-prefix: m240512-
+
+# challenge.xml if not specified
+challenge-xml: challenge.xml
+
+# contest.xml if not specified
+contest-xml: contest.xml
+
+# parties.xml if not specified
+parties-xml: parties.xml
+
+# runs.xml if not specified
+runs-xml: runs.xml
+
+problems:
+    A: problem-a
+    B: problem-b
+    C: problem-c
+    D: problem-d
+    E: problem-e
+    F: problem-f
+    G: problem-g
+    H: problem-h
+    I: problem-i
+    J: problem-j
+    K: problem-k
+    L: problem-l
+    M: problem-m
+    N: problem-n
+    O: problem-o

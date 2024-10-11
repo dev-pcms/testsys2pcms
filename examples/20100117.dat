@@ -1,0 +1,74 @@
+@contest "ACM ICPC 2009-2010 Asia Regional Contest, Shanghai, Sunday, January 17, 2010"
+@startat 17.01.2010 09:30:00
+@contlen 300
+@now 2791628
+@state RESULTS
+@problems 10
+@teams 4
+@submissions 52
+@p A,Alice's Cube,20,0
+@p B,Brute-force Algorithm,20,0
+@p C,Compressed String,20,0
+@p D,Decrypt Message,20,0
+@p E,Exciting Time,20,0
+@p F,Flowers Placement,20,0
+@p G,Game Simulator,20,0
+@p H,Heroes Arrangement,20,0
+@p I,Island Explorer,20,0
+@p J,Jinyuetuan Puzzle,20,0
+@t quadfx,0,1,"PetrSU Quad-FX: Basunkov, Filev, Fedulin, Filippov"
+@t wx,0,1,"PetrSU Wx: Denisov, Nikolaevskiy, Nikolaevskiy"
+@t ifmo2,0,1,"SPb IFMO 2: Akhi, Bannykh, Poromov"
+@t drinkless,0,1,"SPb SU Drink Less: Antipov, Levin, Smirnov"
+@s wx,A,1,1124,RJ,-1
+@s drinkless,A,1,1342,RJ,-1
+@s wx,A,2,1502,RJ,-1
+@s ifmo2,A,1,1772,RJ,-1
+@s wx,A,3,2200,RJ,-1
+@s wx,A,4,2562,OK
+@s wx,B,1,2956,RJ,-1
+@s ifmo2,B,1,3115,RJ,-1
+@s ifmo2,A,2,3288,RJ,-1
+@s ifmo2,B,2,3348,RJ,-1
+@s quadfx,A,1,3415,OK
+@s drinkless,A,2,3719,OK
+@s ifmo2,A,3,4128,OK
+@s drinkless,B,1,4231,RJ,-1
+@s ifmo2,B,3,4447,OK
+@s drinkless,B,2,4913,RJ,-1
+@s ifmo2,F,1,5033,RJ,-1
+@s wx,B,2,5056,RJ,-1
+@s wx,B,3,5867,RJ,-1
+@s wx,B,4,6836,OK
+@s ifmo2,J,1,7519,RJ,-1
+@s ifmo2,J,2,8896,RJ,-1
+@s drinkless,D,1,9000,RJ,-1
+@s wx,J,1,9126,OK
+@s drinkless,D,2,9527,RJ,-1
+@s wx,I,1,10412,RJ,-1
+@s quadfx,B,1,10413,RJ,-1
+@s wx,I,2,10500,RJ,-1
+@s ifmo2,D,1,10507,RJ,-1
+@s drinkless,D,3,11421,OK
+@s ifmo2,D,2,11837,RJ,-1
+@s ifmo2,I,1,12261,RJ,-1
+@s drinkless,J,1,12820,RJ,-1
+@s ifmo2,D,3,13178,OK
+@s quadfx,B,2,13670,OK
+@s ifmo2,I,2,13797,RJ,-1
+@s wx,I,3,13837,RJ,-1
+@s ifmo2,I,3,13961,OK
+@s wx,I,4,14278,RJ,-1
+@s drinkless,B,3,14513,RJ,-1
+@s wx,E,1,14708,RJ,-1
+@s wx,E,2,14825,OK
+@s drinkless,B,4,15142,OK
+@s wx,I,5,15167,RJ,-1
+@s ifmo2,J,3,15216,RJ,-1
+@s ifmo2,J,4,15536,OK
+@s drinkless,J,2,15553,RJ,-1
+@s drinkless,J,3,17492,OK
+@s ifmo2,F,2,17822,RJ,-1
+@s ifmo2,F,3,17919,RJ,-1
+@s ifmo2,F,4,17981,RJ,-1
+@s wx,D,1,17990,RJ,-1
