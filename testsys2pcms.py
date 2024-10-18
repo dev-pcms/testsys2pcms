@@ -298,6 +298,8 @@ def main(config_filename):
     write_parties(meta.sessions, config)
     write_runs(meta.runs, config)
 
+    print(f'{len(meta.problems)} problems, {len(meta.sessions)} sessions, {len(meta.runs)} runs')
+
 
 if __name__ == '__main__':
     import sys
