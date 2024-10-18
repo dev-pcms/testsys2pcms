@@ -157,7 +157,7 @@ def write_challenge(name, problems, config):
             'scoring-model': config.scoring_model,
             'xmlai-process':  'http://neerc.ifmo.ru/develop/pcms2/xmlai/default-rules.xml'
         },
-        'problem',
+        'problem-ref',
         [{
             'alias': problem.letter,
             'problem-id': config.problems_prefix + config.problems[problem.letter],
