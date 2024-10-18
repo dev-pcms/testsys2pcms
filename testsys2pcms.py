@@ -12,7 +12,7 @@ class Line:
     def _next(self):
         ch = self.data[self.i]
         self.i += 1
-        return ch 
+        return ch
 
     def next(self, separators, quotes = ''):
         result = []
@@ -90,7 +90,7 @@ def parse_meta(data, encoding):
 
     for line in [Line(s) for s in meta.splitlines()]:
         if line.data == '':
-            continue 
+            continue
         action = line.next(' ')
         if action == '@contest':
             # @contest "LIX St. Petersburg State University Championship, Sunday, May 12, 2024"
@@ -124,9 +124,9 @@ def parse_meta(data, encoding):
             ))
         else:
             assert action in [
-                '@startat', '@contlen', 
-                '@now', '@state', '@freeze', 
-                '@problems', '@teams', '@submissions', 
+                '@startat', '@contlen',
+                '@now', '@state', '@freeze',
+                '@problems', '@teams', '@submissions',
                 '@comment'
             ], f'Unknown action {action}: {line.data}'
     return SimpleNamespace(contest=contest, problems=problems, sessions=sessions, runs=runs)
@@ -150,7 +150,7 @@ def write_xml_list(filename, root, root_attrs, tag, items):
 def write_challenge(name, problems, config):
     write_xml_list(
         config.challenge_xml,
-        'challenge', 
+        'challenge',
         {
             'id': config.challenge_id,
             'name': name,
@@ -169,7 +169,7 @@ def write_challenge(name, problems, config):
 def write_sessions(sessions, config):
     write_xml_list(
         config.sessions_xml,
-        'sessions', 
+        'sessions',
         {
             'id': config.sessions_prefix[:-1],
             'party-id': config.sessions_prefix[:-1],
@@ -185,7 +185,7 @@ def write_sessions(sessions, config):
 def write_contest(name, sessions, config):
     write_xml_list(
         config.contest_xml,
-        'contest', 
+        'contest',
         {
             'id': config.challenge_id,
             'challenge-id': config.challenge_id,
@@ -201,7 +201,7 @@ def write_contest(name, sessions, config):
 def write_parties(sessions, config):
     write_xml_list(
         config.parties_xml,
-        'parties', 
+        'parties',
         {
             'id': config.parties_prefix[:-1],
             'xmlai-process':  'http://neerc.ifmo.ru/develop/pcms2/xmlai/default-rules.xml'
@@ -244,7 +244,7 @@ def getter(kind, items, allow_missing=False):
 
 def parse_config(yaml):
     from types import SimpleNamespace
-   
+
     config = SimpleNamespace()
     url                     = get_yaml(yaml, 'url')
     config.url = path_to_url(url) if '//' not in url else url
