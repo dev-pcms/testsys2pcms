@@ -160,7 +160,7 @@ def write_challenge(name, problems, config):
         'problem-ref',
         [{
             'alias': problem.letter,
-            'problem-id': config.problems_prefix + config.problems[problem.letter],
+            'problem-id': config.problems_prefix + config.problems(problem.letter),
             'name': problem.name
         } for problem in problems]
     )
@@ -178,7 +178,7 @@ def write_sessions(sessions, config):
             'xmlai-process':  'http://neerc.ifmo.ru/develop/pcms2/xmlai/default-rules.xml'
             },
         'session',
-        [{'id': session.id} for session in sessions]
+        [{'id': config.sessions(session.id)} for session in sessions]
     )
 
 
@@ -194,7 +194,7 @@ def write_contest(name, sessions, config):
             'xmlai-process':  'http://neerc.ifmo.ru/develop/pcms2/xmlai/default-rules.xml',
         },
         'session-ref',
-        [{'id': session.id} for session in sessions]
+        [{'id': config.sessions(session.id)} for session in sessions]
     )
 
 
@@ -207,7 +207,7 @@ def write_parties(sessions, config):
             'xmlai-process':  'http://neerc.ifmo.ru/develop/pcms2/xmlai/default-rules.xml'
         },
         'party',
-        [{'id': session.id, 'name': session.name} for session in sessions]
+        [{'id': config.sessions(session.id), 'name': session.name} for session in sessions]
     )
 
 
@@ -216,7 +216,7 @@ def write_runs(runs, config):
         {
             'id': f'{session_id}.{no + 1}',
             'session-id': session_id,
-            'problem-id': config.problems_prefix + config.problems[run.letter],
+            'problem-id': config.problems_prefix + config.problems(run.letter),
             'time': run.time + 's',
             'accepted': 'yes' if run.outcome == 'OK' else 'no',
             'outcome': 'UD' if run.outcome == 'FZ' else run.outcome,
@@ -231,6 +231,17 @@ def path_to_url(path):
     return 'file:///' + str(Path(path).absolute().as_posix())
 
 
+def getter(kind, items, allow_missing=False):
+    def get(key):
+        if key in items:
+            return items[key]
+        else:
+            assert allow_missing, f'Unknown {kind}: {key}'
+            return key
+
+    return get
+
+
 def parse_config(yaml):
     from types import SimpleNamespace
    
@@ -243,7 +254,10 @@ def parse_config(yaml):
     config.challenge_id     = get_yaml(yaml, 'challenge-id')
     config.scoring_model    = get_yaml(yaml, 'scoring-model', '%icpc')
     config.problems_prefix  = get_yaml(yaml, 'problems-prefix', config.challenge_id + '.')
-    config.problems         = get_yaml(yaml, 'problems')
+    config.missing_problems = get_yaml(yaml, 'allow-missing-problems', 'problems' not in yaml)
+    config.problems         = getter('problem', get_yaml(yaml, 'problems', {}), config.missing_problems)
+    config.missing_sessions = get_yaml(yaml, 'allow-missing-sessions', 'sessions' not in yaml)
+    config.sessions         = getter('session', get_yaml(yaml, 'sessions', {}), config.missing_sessions)
     config.sessions_prefix  = get_yaml(yaml, 'sessions-prefix', config.challenge_id + '.')
     config.parties_prefix   = get_yaml(yaml, 'parties-prefix', config.challenge_id + '.')
     config.clock_id         = get_yaml(yaml, 'clock-id', config.challenge_id)
@@ -266,7 +280,7 @@ def main(config_filename):
     meta = parse_meta(data, config.meta_encoding)
 
     for problem in meta.problems:
-        assert problem.letter in config.problems, f'Unknown problem "{problem.letter}"'
+        config.problems(problem.letter)
 
     write_challenge(meta.contest, meta.problems, config)
     write_contest(meta.contest, meta.sessions, config)
