@@ -218,11 +218,19 @@ def write_runs(runs, config):
             'session-id': session_id,
             'problem-id': config.problems_prefix + config.problems(run.letter),
             'time': run.time + 's',
-            'accepted': 'yes' if run.outcome == 'OK' else 'no',
-            'outcome': 'UD' if run.outcome == 'FZ' else run.outcome,
+            'accepted': 'yes'
+                if not config.ioi and run.outcome == 'OK'
+                or config.ioi and run.outcome != '--'
+                else 'no',
+            'outcome':
+                'UD' if run.outcome == 'FZ' else
+                'RJ' if run.outcome == '--' else
+                'OK' if config.ioi else
+                run.outcome,
+            'score': '0' if run.outcome == '--' or not config.ioi else run.outcome
         }
         for no, run in enumerate(runs)
-        for session_id in [config.sessions_prefix + run.party_id]
+        for session_id in [config.sessions_prefix + config.sessions(run.party_id)]
     ])
 
 
@@ -268,6 +276,8 @@ def parse_config(yaml):
     config.sessions_xml     = get_yaml(yaml, 'runs-xmls', config.xmls_prefix + 'sessions.xml')
     config.parties_xml      = get_yaml(yaml, 'runs-xmls', config.xmls_prefix + 'parties.xml')
     config.runs_xml         = get_yaml(yaml, 'runs-xmls', config.xmls_prefix + 'runs.xml')
+
+    config.ioi = 'ioi' in config.scoring_model
 
     return config
 
