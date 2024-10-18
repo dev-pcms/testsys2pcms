@@ -6,7 +6,7 @@ TestSys log to PCMS XMLs converter.
 
 Install [Python 3.8+](https://www.python.org/downloads/).
 
-Install Python packages: `pip3 install requests requests_file`.
+Install Python packages: `pip3 install pyyaml requests requests_file`.
 
 Run: `python testsys2pcms.py [config.yaml]`.
 

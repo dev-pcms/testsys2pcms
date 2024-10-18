@@ -69,12 +69,12 @@ def get_yaml(node, key, default = None):
     if key in node:
         result = node[key]
         if result is dict:
-            result['__path'] = f'{node['__path']}/{key}'
+            result['__path'] = f'{node["__path"]}/{key}'
         return result
     elif default is not None:
         return default
     else:
-        raise Exception(f'Key "{key}" not found in {node['__path']}')
+        raise Exception(f'Key "{key}" not found in {node["__path"]}')
 
 def parse_meta(data, encoding):
     META_SEPARATOR = 26
@@ -142,7 +142,8 @@ def write_xml_list(filename, root, root_attrs, tag, items):
         xml.end(tag)
 
     document = ET.ElementTree(xml.end(root))
-    ET.indent(document, space="    ", level=0)
+    if hasattr(ET, 'indent'):
+        ET.indent(document, space="    ", level=0)
     document.write(filename, encoding="UTF-8", xml_declaration=True)
 
 
