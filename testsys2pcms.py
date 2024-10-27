@@ -33,13 +33,19 @@ class Line:
         return ''.join(result)
 
 
+REQUEST_HEADERS = {
+    "Cache-Control": "no-cache",
+    "Pragma": "no-cache"
+}
+
+
 def download(url):
     from requests import Session
     from requests_file import FileAdapter
     with Session() as session:
         session.mount('file://', FileAdapter())
 
-        result = session.get(url)
+        result = session.get(url, headers=REQUEST_HEADERS)
         if result.status_code != 200:
             raise Exception(f'Status code {result.status_code}')
         return result.content
