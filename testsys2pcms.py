@@ -187,7 +187,7 @@ def write_contest(name, sessions, config):
         config.contest_xml,
         'contest',
         {
-            'id': config.challenge_id,
+            'id': config.contest_id,
             'challenge-id': config.challenge_id,
             'clock-id': config.clock_id,
             'name': name,
@@ -260,6 +260,7 @@ def parse_config(yaml):
     config.filename         = get_yaml(yaml, 'filename', extract_filename(config.url))
     config.meta_encoding    = get_yaml(yaml, 'meta-encoding', 'utf8')
     config.challenge_id     = get_yaml(yaml, 'challenge-id')
+    config.contest_id       = get_yaml(yaml, 'contest-id', config.challenge_id)
     config.scoring_model    = get_yaml(yaml, 'scoring-model', '%icpc')
     config.problems_prefix  = get_yaml(yaml, 'problems-prefix', config.challenge_id + '.')
     config.missing_problems = get_yaml(yaml, 'allow-missing-problems', 'problems' not in yaml)

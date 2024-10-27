@@ -9,6 +9,9 @@ scoring-model: '%icpc'
 filename: m240512.dat
 
 # challenge-id if not specified
+contest-id: dev.pcms.test.m240512
+
+# challenge-id if not specified
 clock-id: dev.pcms.test.m240512
 
 # challenge-id with a dot if not specified
